@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(cut -c1 | tr -d " \n")
+tail -n +2 | sort | cut -f1 | uniq -c | sort -g -r | head -11 | tr -s " " | cut -d" " -f3
