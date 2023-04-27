@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#this script prints best school and Hi on new line
+i=1
+while [ $i -ge 10 ]
+do 
+	echo "Best School"
+	if [ $i == 9 ]
+	then
+		echo "Hi"
+	fi
+((i++))
+done
