@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#this script uses untill loop to print "best_school" 10 times
+i=1
+until [ $i -ge 10 ]
+do
+	echo "Best School"
+	((i++))
+done
