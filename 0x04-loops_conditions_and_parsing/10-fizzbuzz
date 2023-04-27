@@ -3,18 +3,17 @@
 i=1
 while [ $i -le 100 ]
 do
-	echo $i
 	if [[ $((i%3)) -eq 0 ]] && [[ $((i%5)) -eq 0 ]]
 	then
 		echo "FizzBuzz"
-fi
-if [ $((i%3)) -eq 0 ]
-then
-	echo "Fizz"
-fi
-if [ $((i%5)) -eq 0) ]
-then
-	echo "Buzz"
-fi
+	elif [ $((i%3)) -eq 0 ]
+	then
+		echo "Fizz"
+	elif [ $((i%5)) -eq 0 ]
+	then
+		echo "Buzz"
+	else
+		echo $i
+	fi
 ((i++))
 done
