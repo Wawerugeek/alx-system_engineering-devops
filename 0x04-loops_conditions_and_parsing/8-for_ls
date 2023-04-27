@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #this script prints the content of currrent working dir in list format
-for filename in *-*
+for filename in *
 do
-	echo "${filename#*-}"
+	echo "$filename" | cut -d "-" -f2-
 done
