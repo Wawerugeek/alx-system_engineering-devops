@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#this script shows the contents of etc.passwd
+filename=/etc/passwd
+while read -r line; do
+	echo "$line" | cut -f 1, 3, 6 -d ":"
+done < "$filename"
+
