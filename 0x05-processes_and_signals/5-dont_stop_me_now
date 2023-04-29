@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #this script kills/stops the previous process 
-kill "$(grep -f 4-to_infinity_and_beyond)"
+kill "$(pgrep -f 4-to_infinity_and_beyond)"
