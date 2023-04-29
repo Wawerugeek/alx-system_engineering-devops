@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#it dipalys To infinity indefinitely, sleeps 2
+#diplays str when receivin a SIFTERM
+
+trap "echo I am invincible!!!" SIGINT SIGTERM
+while :
+do
+	echo "To infinity and beyond"
+	sleep 2
+done

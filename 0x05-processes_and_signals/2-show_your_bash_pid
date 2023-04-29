@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#a script that dipslays lines containing bash word
+#shellcheck disable=SC2009
+ps -aux | less | grep bash
