@@ -1,0 +1,4 @@
+#!/usr/bin/dev
+#this script listens to port 98 on local host
+
+nc -l localhost 98

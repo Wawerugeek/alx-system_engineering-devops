@@ -1,0 +1,3 @@
+#!/usr/bin/dev bash
+#this script displays all active IPv4 on the machine its executed on
+ip -4 -o addr show | awk '{print $4}' | cut -d "/" -f 1
