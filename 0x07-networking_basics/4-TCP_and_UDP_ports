@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#this bash script dsipalys listening sockets:
+#it also shows the PID and name of the prog that each socket belong
+netstat -l --program
