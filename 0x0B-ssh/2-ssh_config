@@ -1,0 +1,5 @@
+# ssh configeration file
+
+Host *
+      PasswordAuthentication no
+      IdentifyFile ~/.ssh/school
