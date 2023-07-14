@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#this script will install nginx to the web server
+#Nginix will listen on port 80
+#When querying Nginx at its root / with a GET request (requesting a page) 
+#using curl, it must return a page that contains the string Hello World!
+sudo apt update
+sudo apt -y install nginx
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo service nginx start
