@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #script to make nginx listen to port 80 of all servers 
-sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-sudo service nginx start
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo sed -i "s/sites-enabled/sites-available/" /etc/nginx/nginx.conf
+service nginx start
 
