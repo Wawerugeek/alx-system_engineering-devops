@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
-#script to make nginx listen to port 80 of all servers active ipv4s
+#script to make nginx listen to port 80 of all servers 
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 sudo service nginx restart
+
