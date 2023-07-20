@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#fixing: connection reset by peer:
+echo "ServerName localhost" >> /etc/apache2.conf
+service apache2 start
