@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# shorter code to make nginx listen to port 80
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+pkill -HUP nginx
+
