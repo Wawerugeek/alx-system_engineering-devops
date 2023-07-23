@@ -2,15 +2,21 @@
 #install and configure HAproxy on front-end server
 #HAproxy should send traffic to web-01 and web-02
 #HAproxy is configured by init script
-CONFIGFILE="\\\nlisten appname 0.0.0.0:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 196529-web-01 54.236.16.58 check\n\tserver 196529-web-02 52.86.115.223 check\n"
+sudo apt -y update
+sudo apt install -y haproxy
 
-sudo apt-get update
-sudo apt-get -y install nginx
-#version 1.5 and above
-sudo apt-get install -y haproxy
-#enable HAproxy can be managed via an init script
-sudo sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy
-# include roundrobin and two servers
-sudo sed -i "\$a $CONFGFILE" /etc/haproxy/haproxy.cfg
+OUT=/etc/haproxy/haproxy.cfg
+  
+cat <<EOF >>$OUT
+frontend http_front
+   bind *:80
+   stats uri /haproxy?stats
+   default_backend http_back
 
-sudo service haproxy start
+backend http_back
+   balance roundrobin
+   server 196529-web-01 54.236.16.58 check
+   server 196529-web-02 52.86.115.233 check
+EOF
+echo "ENABLED=1" >> /etc/default/haproxy
+sudo service haproxy restart
