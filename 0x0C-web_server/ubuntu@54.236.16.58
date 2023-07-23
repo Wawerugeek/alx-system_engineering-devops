@@ -1,10 +1,28 @@
-#!/usr/bin/env bash
-#this script installs nginix on webserver: it listens to port 80:
-#creates a redirect to another page
+#install nginix with puppet
+#listening on port 80
+#when queried as root it must return Hello world
+#redirection is moved permenately
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-echo "Hello World!" > sudo /var/www/html/index.nginx-debian.html
-sed -i "37i\rewrite ^/redirect_me https://www.google.com permanent;" /etc/nginx/sites-available/default
-sudo service nginx start
+exec { 'apt-get-update':
+  command => '/usr/bin/apt-get update',
+}
+
+package { 'nginx':
+  ensure  => installed,
+  require => Exec['apt-get-update'],
+}
+
+file { '/var/www/html/index.html':
+  content => 'Hello World!',
+  require => Package['nginx'],
+}
+
+exec {'redirect_me':
+  command  => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
+  provider => 'shell'
+}
+
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
+}
