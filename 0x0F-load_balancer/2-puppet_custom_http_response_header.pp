@@ -1,14 +1,20 @@
-#install nginix
-include nginx
-file { '/etc/nginx/conf.d/custom_header.conf':
-  ensure  => file,
-  content => "add_header X-Served-By $::hostname;",
-  require => Class['nginx'],
-  notify  => Service['nginx'],
+#puppet script to install nginix
+exec { '/usr/bin/env apt-get -y update':}
+->package {'nginx':
+ensure => installed,
 }
 
-service { 'nginx':
-  ensure  => running,
-  enable  => true,
-  require => File['/etc/nginx/conf.d/custom_header.conf'],
+->file {'/var/www/html/index.html':
+content => 'Hello world!\n',
 }
+
+->file_line {'add protocol':
+ensure => present,
+path   => '/etc/nginx/sites-available/default',
+after  => 'listen 80 default_server;',
+line   => "\tadd_header X-Served-By ${hostname};",
+}
+
+->service { 'nginx':
+ensure     => running,
+}i
