@@ -26,7 +26,7 @@ def main():
     )
 
     for task in completed_tasks:
-        print("\t{}".format(task["title"]))
+        print("\t {}".format(task["title"]))
 
 
 if __name__ == "__main__":
