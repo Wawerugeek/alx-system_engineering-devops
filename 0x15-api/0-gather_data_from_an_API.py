@@ -21,8 +21,8 @@ def main():
     TOTAL_NUMBER_OF_TASKS = len(tasks)
 
     print(
-        f"Employee {EMPLOYEE_NAME} is done \
-        with tasks({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):"
+        f"Employee {EMPLOYEE_NAME} is done "
+        f"with tasks({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):"
     )
 
     for task in completed_tasks:
